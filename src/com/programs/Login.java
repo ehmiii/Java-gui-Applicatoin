@@ -15,7 +15,7 @@ class Login {
         // Making title label
         JLabel title_label=new JLabel("Expenses Tracker",SwingConstants.CENTER);
         title_label.setBounds(0,0,463,70);
-        title_label.setFont(new Font("New times roman", Font.BOLD, 18));
+        title_label.setFont(new Font("Sofia", Font.BOLD, 32));
         // creating error dialog box
 
 
@@ -23,11 +23,14 @@ class Login {
         JTextField username=new JTextField();
         username.setBounds(122,85,219,36);
         username.setBackground(Color.cyan);
+        username.setFont(new Font("Luxurious Roman",Font.PLAIN,16));
         username.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         username.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                username.setText("");
+                if(username.getText().equals("Enter your name")) {
+                    username.setText("");
+                }
             }
 
             @Override
@@ -42,9 +45,8 @@ class Login {
         // Creating password field
         JPasswordField password =new JPasswordField("Enter your password");
         password.setBounds(122,136,219,36);
-        password.setBackground(
-                Color.cyan
-        );
+        password.setFont(new Font("Luxurious Roman",Font.PLAIN,16));
+        password.setBackground(Color.cyan);
         password.setForeground(Color.gray);
         password.setEchoChar((char) 0);
         password.setBorder(BorderFactory.createLineBorder(Color.BLUE));
@@ -73,6 +75,7 @@ class Login {
         //Creating login button
         JButton login_button=new JButton("Login");
         login_button.setBounds(122,187,106,35);
+        login_button.setFont(new Font("Sofia", Font.BOLD, 16));
         login_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         //Creating action listener on login button
         login_button.addActionListener(new ActionListener() {
@@ -100,18 +103,27 @@ class Login {
         // Creating signup_button
         JButton signup_button=new JButton("Signup");
         signup_button.setBounds(235,187,106,35);
+        signup_button.setFont(new Font("Sofia", Font.BOLD, 16));
         signup_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         login_frame.add(signup_button);
         login_frame.add(login_button);
         login_frame.add(username);
         login_frame.add(password);
         login_frame.add(title_label);
+//        login_frame.add(background);
         login_frame.setIconImage(logo);
         login_frame.setSize(463,307);
         login_frame.setLocation(dimension.width/2-login_frame.getSize().width/2, dimension.height/2-login_frame.getSize().height/2);
+        login_frame.setResizable(false);
         login_frame.setLayout(null);
         login_frame.setVisible(true);
+        login_frame.getContentPane().setBackground(new Color(175,231,234,255));
         login_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }

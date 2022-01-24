@@ -20,6 +20,7 @@ public class Entries_Table {
     DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     Date date = new Date();
     double total_Price=0;
+    int count=0;
     Entries_Table(){
         final Dimension[] dimension = {Toolkit.getDefaultToolkit().getScreenSize()};
         JFrame entries_Table=new JFrame("Entries Table");
@@ -40,19 +41,25 @@ public class Entries_Table {
         income_Field.setVisible(false);
         income_Field.setForeground(Color.gray);
         income_Field.setBounds(159,39,227,30);
+        income_Field.setBackground(new Color(175,231,234,255));
+        income_Field.setFont(new Font("Luxurious Roman",Font.PLAIN,16));
+        income_Field.setBackground(Color.cyan);
         income_Field.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         income_Field.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                income_Field.setText("");
-                income_Field.setForeground(Color.black);
+                if(income_Field.getText().equals("Enter your income")) {
+                    income_Field.setFont(new Font("Nanum", Font.PLAIN, 16));
+                    income_Field.setText("");
+                    income_Field.setForeground(Color.black);
+                }
             }
             @Override
             public void focusLost(FocusEvent e) {
                 if(income_Field.getText().equals("")) {
                     income_Field.setForeground(Color.gray);
                     income_Field.setText("Enter your income");
-
+                    income_Field.setFont(new Font("Luxurious Roman",Font.PLAIN,16));
                 }
             }
         });
@@ -68,6 +75,8 @@ public class Entries_Table {
         // Creating checkBox
 
         checkBox.setBounds(146,0,253,30);
+        checkBox.setBackground(new Color(175,231,234,255));
+        checkBox.setFont(new Font("Nanum",Font.PLAIN,15));
         checkBox.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         checkBox.addItemListener(new ItemListener() {
             @Override
@@ -81,6 +90,8 @@ public class Entries_Table {
 
         item_Field.setForeground(Color.gray);
         item_Field.setBounds(63,78,192,30);
+        item_Field.setFont(new Font("Luxurious Roman",Font.PLAIN,15));
+        item_Field.setBackground(Color.cyan);
         item_Field.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         item_Field.addFocusListener(new FocusListener() {
             @Override
@@ -89,6 +100,7 @@ public class Entries_Table {
                 {
                     item_Field.setText("");
                     item_Field.setForeground(Color.black);
+                    item_Field.setFont(new Font("Nanum",Font.PLAIN,15));
                 }
             }
 
@@ -98,6 +110,7 @@ public class Entries_Table {
                 {
                     item_Field.setForeground(Color.gray);
                     item_Field.setText("Enter item name");
+                    item_Field.setFont(new Font("Luxurious Roman",Font.PLAIN,15));
 
                 }
             }
@@ -115,6 +128,8 @@ public class Entries_Table {
 
         price_field.setForeground(Color.gray);
         price_field.setBounds(290,78,192,30);
+        price_field.setFont(new Font("Luxurious Roman",Font.PLAIN,16));
+        price_field.setBackground(Color.cyan);
         price_field.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         price_field.addFocusListener(new FocusListener() {
             @Override
@@ -123,6 +138,7 @@ public class Entries_Table {
                 {
                     price_field.setText("");
                     price_field.setForeground(Color.black);
+                    price_field.setFont(new Font("Nanum",Font.PLAIN,15));
                 }
             }
 
@@ -131,6 +147,7 @@ public class Entries_Table {
                 if(price_field.getText().equals("")){
                     price_field.setForeground(Color.gray);
                     price_field.setText("Enter item price");
+                    price_field.setFont(new Font("Luxurious Roman",Font.PLAIN,15));
 
                 }
             }
@@ -146,6 +163,7 @@ public class Entries_Table {
 ///////////////////////////////////////////////////////////////////////////////////////
         // Creating adding button
         add_button.setBounds(63,117,115,30);
+        add_button.setFont(new Font("Sofia", Font.PLAIN, 16));
         add_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 //        final int[] count = {1};
         add_button.addActionListener(new ActionListener() {
@@ -153,6 +171,7 @@ public class Entries_Table {
             public void actionPerformed(ActionEvent e) {
 
                 try {
+                    count++;
                     if (item_Field.getText().equals("Enter item name")){
                         JOptionPane.showMessageDialog(null,"Please enter your item name","Error",JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -181,6 +200,7 @@ public class Entries_Table {
         // Creating remove button
 
         remove_button.setBounds(215,117,115,30);
+        remove_button.setFont(new Font("Sofia", Font.PLAIN, 18));
         remove_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         remove_button.addActionListener(new ActionListener() {
             @Override
@@ -191,20 +211,18 @@ public class Entries_Table {
                 else {
                     try {
 
-                        int getLine = textArea.getLineStartOffset(0);
-                        int end = textArea.getLineEndOffset(0);
+                        int getLine = textArea.getLineStartOffset(count-1);
+                        int end = textArea.getLineEndOffset(count-1);
                         textArea.replaceRange(null, getLine, end);
 
 
-                        int getLine1 = textArea1.getLineStartOffset(0);
-                        int end1 = textArea1.getLineEndOffset(0);
+                        int getLine1 = textArea1.getLineStartOffset(count-1);
+                        int end1 = textArea1.getLineEndOffset(count-1);
                         textArea1.replaceRange(null, getLine1, end1);
-//                        if(count[0]>0) {
-//                            count[0]--;
-//                        }
-//                        else {
-//                            count[0]=0;
-//                        }
+                        if(count <0){
+                            count=0;
+                        }
+                        else count--;
                     } catch (BadLocationException badLocationException) {
                         badLocationException.printStackTrace();
                     }
@@ -216,31 +234,37 @@ public class Entries_Table {
 /////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating calculation button
         calculate_button.setBounds(367,117,115,30);
+        calculate_button.setFont(new Font("Sofia", Font.PLAIN, 16));
         calculate_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         calculate_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    String[] total=textArea1.getText().split("\n");
-                    String[] find=textArea.getText().split("\\n");
-                    double[] total_price= Arrays.stream(total).mapToDouble(Double::parseDouble).toArray();
-                    double sum=0;
+                    if(!textArea.getText().equals("")) {
+                        String[] total = textArea1.getText().split("\n");
+                        String[] find = textArea.getText().split("\\n");
+                        double[] total_price = Arrays.stream(total).mapToDouble(Double::parseDouble).toArray();
+                        double sum = 0;
 
-                    for (int i=0;i<=total_price.length-1;i++){
-                        if(find[i].equals("Total :")){
-                            continue;
+                        for (int i = 0; i <= total_price.length - 1; i++) {
+                            if (find[i].equals("Total :")) {
+                                continue;
+                            } else {
+                                sum += total_price[i];
+                            }
+                            total_Price = sum;
                         }
-                        else {
-                            sum += total_price[i];
-                        }
-                        total_Price=sum;
+                        File Total_Income = new File("Income.txt");
+                        Scanner income = new Scanner(Total_Income);
+                        double total_income = Double.parseDouble(income.nextLine());
+                        double left_cash = total_income - sum;
+                        total_Label.setText("");
+                        total_Label.setText("Total cash: " + sum + "Rs" + "    Left cash: " + left_cash + "Rs" + "    Income: " + total_income);
                     }
-                    File Total_Income=new File("Income.txt");
-                    Scanner income=new Scanner(Total_Income);
-                    double total_income =Double.parseDouble(income.nextLine());
-                    double left_cash=total_income-sum;
-                    total_Label.setText("");
-                    total_Label.setText("Total cash: "+sum+"Rs"+"    Left cash: "+left_cash+"Rs"+"    Income: "+total_income);
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null,"There is nothing to calculate please enter some amount","Attention!!!",1);
+                    }
                 }catch (Exception ignored){
 
                 }
@@ -250,19 +274,21 @@ public class Entries_Table {
         // Creating text area for adding item temporary
         textArea.setBounds(63,156,209,276);
         textArea1.setBounds(272,156,209,276);
+        textArea1.setFont(new Font("Nanum",Font.PLAIN,16));
+        textArea.setFont(new Font("Nanum", Font.PLAIN,16));
         textArea.setHighlighter(null);
         textArea1.setHighlighter(null);
         textArea.setEditable( false );
         textArea1.setEditable(false);
         textArea.setForeground(Color.black);
         textArea1.setForeground(Color.black);
-        textArea.setFont(new Font("Time Roman",Font.PLAIN,14));
 
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating Label for displaying total price
         total_Label.setBounds(18,434,508,35);
+        total_Label.setFont(new Font("Nanum", Font.PLAIN, 16));
         total_Label.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         total_Label.setHorizontalAlignment(SwingConstants.CENTER);
         total_Label.setVerticalAlignment(SwingConstants.CENTER);
@@ -271,6 +297,7 @@ public class Entries_Table {
         // Creating SAVE button
         JButton save_button=new JButton("SAVE");
         save_button.setBounds(63,482,96,36);
+        save_button.setFont(new Font("Sofia", Font.PLAIN, 18));
         save_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         save_button.addActionListener(new ActionListener() {
             @Override
@@ -330,6 +357,7 @@ public class Entries_Table {
         // Creating Check history Button
         JButton check_history_button=new JButton("Check");
         check_history_button.setBounds(224,482,96,36);
+        check_history_button.setFont(new Font("Sofia", Font.PLAIN, 18));
         check_history_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         check_history_button.addActionListener(new ActionListener() {
             @Override
@@ -345,6 +373,7 @@ public class Entries_Table {
         // Creating Logout Button
 
         logout_button.setBounds(386,482,96,36);
+        logout_button.setFont(new Font("Sofia", Font.PLAIN, 18));
         logout_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         logout_button.addActionListener(new ActionListener() {
             @Override
@@ -370,8 +399,10 @@ public class Entries_Table {
         entries_Table.add(checkBox);
         entries_Table.setSize(545,568);
         entries_Table.setLocation(dimension[0].width/2-entries_Table.getSize().width/2, dimension[0].height/2-entries_Table.getSize().height/2);
+        entries_Table.setResizable(false);
         entries_Table.setLayout(null);
         entries_Table.setVisible(true);
+        entries_Table.getContentPane().setBackground(new Color(175,231,234,255));
         entries_Table.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

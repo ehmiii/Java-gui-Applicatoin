@@ -21,13 +21,14 @@ public class History {
         JLabel calculate_label=new JLabel("Click on calculate button");
         JLabel income_label=new JLabel();
         income_label.setBounds(145,5,366,33);
+        income_label.setFont(new Font("Nanum", Font.PLAIN, 16));
         income_label.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         income_label.setHorizontalAlignment(SwingConstants.CENTER);
         income_label.setVerticalAlignment(SwingConstants.CENTER);
         try{
         File Income=new File("Income.txt");
             Scanner income=new Scanner(Income);
-            income_label.setText("Your income is: "+income.nextLine());
+            income_label.setText("Total Amount: "+income.nextLine());
             income.close();
 
         }catch (Exception ignored){
@@ -37,6 +38,7 @@ public class History {
         // Income clear button
         JButton income_clear=new JButton("CLEAR INCOME");
         income_clear.setBounds(518,5,135,32);
+        income_clear.setFont(new Font("Sofia", Font.PLAIN, 14));
         income_clear.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         income_clear.addActionListener(new ActionListener() {
             @Override
@@ -60,6 +62,7 @@ public class History {
         JTextArea textArea=new JTextArea();
         textArea.setEditable(false);
         textArea.setBounds(145,44,366,388);
+        textArea.setFont(new Font("Nanum", Font.PLAIN, 14));
         textArea.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         try{
             File Total_Income=new File("Income.txt");
@@ -89,6 +92,7 @@ public class History {
 /////////////////////////////////////////////////////////////////////////////////////////
         // Creating label for calculation
         calculate_label.setBounds(145,440,366,34);
+        calculate_label.setFont(new Font("Nanum", Font.PLAIN, 14));
         calculate_label.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         calculate_label.setHorizontalAlignment(SwingConstants.CENTER);
         calculate_label.setVerticalAlignment(SwingConstants.CENTER);
@@ -99,6 +103,7 @@ public class History {
         // Creating print button
         JButton print_button=new JButton("PRINT");
         print_button.setBounds(145,482,98,32);
+        print_button.setFont(new Font("Sofia", Font.PLAIN, 15));
         print_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         print_button.addActionListener(new ActionListener() {
             @Override
@@ -116,6 +121,7 @@ public class History {
         // Creating back button
         JButton back_button=new JButton("BACK");
         back_button.setBounds(413,482,98,32);
+        back_button.setFont(new Font("Sofia", Font.PLAIN, 15));
         back_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         back_button.addActionListener(new ActionListener() {
             @Override
@@ -128,6 +134,7 @@ public class History {
         // Creating Calculate button
         JButton calculate_button=new JButton("CALCULATE");
         calculate_button.setBounds(265,482,126,32);
+        calculate_button.setFont(new Font("Sofia", Font.PLAIN, 14));
         calculate_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         calculate_button.addActionListener(new ActionListener() {
             @Override
@@ -147,7 +154,7 @@ public class History {
                         }
                     }
                     double sum= income.nextDouble()-total;
-                    calculate_label.setText("Total amount: " + total + "    Left amount: " + sum);
+                    calculate_label.setText("Total expenses: " + total + "    Left amount: " + sum);
                 } catch (FileNotFoundException fileNotFoundException) {
                     fileNotFoundException.printStackTrace();
                 }
@@ -158,6 +165,7 @@ public class History {
         // Creating Clear Button
         JButton clear_button=new JButton("CLEAR");
         clear_button.setBounds(539,44,98,32);
+        clear_button.setFont(new Font("Sofia", Font.PLAIN, 15));
         clear_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         clear_button.addActionListener(new ActionListener() {
             @Override
@@ -197,8 +205,10 @@ public class History {
         history_frame.add(income_label);
         history_frame.setSize(657,565);
         history_frame.setLocation(dimension.width/2-history_frame.getSize().width/2, dimension.height/2-history_frame.getSize().height/2);
+        history_frame.setResizable(false);
         history_frame.setLayout(null);
         history_frame.setVisible(true);
+        history_frame.getContentPane().setBackground(new Color(175,231,234,255));
         history_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
