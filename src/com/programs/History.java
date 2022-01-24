@@ -23,8 +23,9 @@ public class History {
         JLabel calculate_label=new JLabel("Click on calculate button");
         JLabel income_label=new JLabel();
         income_label.setBounds(145,5,366,33);
-        income_label.setFont(new Font("Nanum", Font.PLAIN, 16));
-        income_label.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        income_label.setFont(new Font("Nanum", Font.BOLD, 16));
+//        income_label.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        income_label.setBorder(null);
         income_label.setHorizontalAlignment(SwingConstants.CENTER);
         income_label.setVerticalAlignment(SwingConstants.CENTER);
         try{
@@ -42,7 +43,7 @@ public class History {
         JButton income_clear=new JButton("CLEAR INCOME");
         income_clear.setBounds(518,5,135,32);
         income_clear.setFont(new Font("Sofia", Font.PLAIN, 14));
-        income_clear.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+//        income_clear.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 
         income_clear.addActionListener(new ActionListener() {
             @Override
@@ -83,17 +84,19 @@ public class History {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                income_clear.setBorder(BorderFactory.createLineBorder(Color.blue));
+                income_clear.setBorder(null);
             }
         });
+        income_clear.setBorder(null);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating Text area for history
         JTextArea textArea=new JTextArea();
         textArea.setEditable(false);
         textArea.setBounds(145,44,366,388);
+        textArea.setBackground(new Color(85, 186, 235));
         textArea.setFont(new Font("Nanum", Font.PLAIN, 14));
-        textArea.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+//        textArea.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         try{
             File Total_Income=new File("Income.txt");
             File Total_Expenses=new File("Total_Expenses.txt");
@@ -122,8 +125,8 @@ public class History {
 /////////////////////////////////////////////////////////////////////////////////////////
         // Creating label for calculation
         calculate_label.setBounds(145,440,366,34);
-        calculate_label.setFont(new Font("Nanum", Font.PLAIN, 14));
-        calculate_label.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        calculate_label.setFont(new Font("Nanum", Font.BOLD, 14));
+//        calculate_label.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         calculate_label.setHorizontalAlignment(SwingConstants.CENTER);
         calculate_label.setVerticalAlignment(SwingConstants.CENTER);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -136,7 +139,7 @@ public class History {
         JButton print_button=new JButton("PRINT");
         print_button.setBounds(145,482,98,32);
         print_button.setFont(new Font("Sofia", Font.PLAIN, 15));
-        print_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+//        print_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 
         print_button.addActionListener(new ActionListener() {
             @Override
@@ -171,16 +174,17 @@ public class History {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                print_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+                print_button.setBorder(null);
             }
         });
+        print_button.setBorder(null);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating back button
         JButton back_button=new JButton("BACK");
         back_button.setBounds(413,482,98,32);
         back_button.setFont(new Font("Sofia", Font.PLAIN, 15));
-        back_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+//        back_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         back_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -211,16 +215,17 @@ public class History {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                back_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+                back_button.setBorder(null);
             }
         });
+        back_button.setBorder(null);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating Calculate button
         JButton calculate_button=new JButton("CALCULATE");
         calculate_button.setBounds(265,482,126,32);
         calculate_button.setFont(new Font("Sofia", Font.PLAIN, 14));
-        calculate_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+//        calculate_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 
         calculate_button.addActionListener(new ActionListener() {
             @Override
@@ -274,16 +279,17 @@ public class History {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                calculate_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+                calculate_button.setBorder(null);
             }
         });
+        calculate_button.setBorder(null);
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
         // Creating Clear Button
         JButton clear_button=new JButton("CLEAR");
         clear_button.setBounds(539,44,98,32);
         clear_button.setFont(new Font("Sofia", Font.PLAIN, 15));
-        clear_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+//        clear_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 
         clear_button.addActionListener(new ActionListener() {
             @Override
@@ -335,9 +341,17 @@ public class History {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                clear_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+                clear_button.setBorder(null);
             }
         });
+        clear_button.setBorder(null);
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        JLabel background=new JLabel();
+        background.setBounds(0,0,657,565);
+        ImageIcon icon=new ImageIcon("/home/anonymous/Study Material/JAVA/JAVAProject/src/History.jpeg");
+        background.setIcon(icon);
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
         history_frame.add(income_clear);
@@ -355,5 +369,6 @@ public class History {
         history_frame.setVisible(true);
         history_frame.getContentPane().setBackground(new Color(175,231,234,255));
         history_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        history_frame.add(background);
     }
 }

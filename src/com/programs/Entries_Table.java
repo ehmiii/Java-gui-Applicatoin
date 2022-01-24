@@ -1,6 +1,4 @@
 package com.programs;
-
-
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import java.awt.*;
@@ -41,10 +39,10 @@ public class Entries_Table {
         income_Field.setVisible(false);
         income_Field.setForeground(Color.gray);
         income_Field.setBounds(159,39,227,30);
-        income_Field.setBackground(new Color(175,231,234,255));
+//        income_Field.setBackground(new Color(175,231,234,255));
         income_Field.setFont(new Font("Luxurious Roman",Font.PLAIN,16));
-        income_Field.setBackground(Color.cyan);
-        income_Field.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        income_Field.setBackground(new Color(112, 202, 243));
+//        income_Field.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         income_Field.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -95,16 +93,19 @@ public class Entries_Table {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                income_Field.setBorder(BorderFactory.createLineBorder(Color.blue));
+                income_Field.setBorder(null);
             }
         });
+        income_Field.setBorder(null);
+
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating checkBox
         checkBox.setBounds(146,0,253,30);
-        checkBox.setBackground(new Color(175,231,234,255));
+//        checkBox.setBackground(new Color(175,231,234,255));
+        checkBox.setBackground(new Color(112, 202, 243));
         checkBox.setFont(new Font("Nanum",Font.PLAIN,15));
-        checkBox.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+//        checkBox.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         checkBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -135,9 +136,10 @@ public class Entries_Table {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                checkBox.setBorder(BorderFactory.createLineBorder(Color.blue));
+                checkBox.setBorder(null);
             }
         });
+        checkBox.setBorder(null);
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -145,8 +147,8 @@ public class Entries_Table {
         item_Field.setForeground(Color.gray);
         item_Field.setBounds(63,78,192,30);
         item_Field.setFont(new Font("Luxurious Roman",Font.PLAIN,15));
-        item_Field.setBackground(Color.cyan);
-        item_Field.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        item_Field.setBackground(new Color(112, 202, 243));
+//        item_Field.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 
         item_Field.addFocusListener(new FocusListener() {
             @Override
@@ -201,9 +203,10 @@ public class Entries_Table {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                item_Field.setBorder(BorderFactory.createLineBorder(Color.blue));
+                item_Field.setBorder(null);
             }
         });
+        item_Field.setBorder(null);
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -211,8 +214,8 @@ public class Entries_Table {
         price_field.setForeground(Color.gray);
         price_field.setBounds(290,78,192,30);
         price_field.setFont(new Font("Luxurious Roman",Font.PLAIN,16));
-        price_field.setBackground(Color.cyan);
-        price_field.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        price_field.setBackground(new Color(112, 202, 243));
+//        price_field.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 
         price_field.addFocusListener(new FocusListener() {
             @Override
@@ -266,16 +269,17 @@ public class Entries_Table {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                price_field.setBorder(BorderFactory.createLineBorder(Color.blue));
+                price_field.setBorder(null);
             }
         });
+        price_field.setBorder(null);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating adding button
         add_button.setBounds(63,117,115,30);
         add_button.setFont(new Font("Sofia", Font.PLAIN, 16));
-        add_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+//        add_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 
         add_button.addActionListener(new ActionListener() {
             @Override
@@ -327,16 +331,17 @@ public class Entries_Table {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                add_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+                add_button.setBorder(null);
             }
         });
+        add_button.setBorder(null);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating remove button
         remove_button.setBounds(215,117,115,30);
         remove_button.setFont(new Font("Sofia", Font.PLAIN, 18));
-        remove_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+//        remove_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 
         remove_button.addActionListener(new ActionListener() {
             @Override
@@ -385,15 +390,16 @@ public class Entries_Table {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                remove_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+                remove_button.setBorder(null);
             }
         });
+        remove_button.setBorder(null);
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating calculation button
         calculate_button.setBounds(367,117,115,30);
         calculate_button.setFont(new Font("Sofia", Font.PLAIN, 16));
-        calculate_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+//        calculate_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 
         calculate_button.addActionListener(new ActionListener() {
             @Override
@@ -452,12 +458,15 @@ public class Entries_Table {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                calculate_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+                calculate_button.setBorder(null);
             }
         });
+        calculate_button.setBorder(null);
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
         // Creating text area for adding item temporary
+        textArea.setBackground(new Color(112, 202, 243));
+        textArea1.setBackground(new Color(112, 202, 243));
         textArea.setBounds(63,156,209,276);
         textArea1.setBounds(272,156,209,276);
         textArea1.setFont(new Font("Nanum",Font.PLAIN,16));
@@ -476,7 +485,8 @@ public class Entries_Table {
         // Creating Label for displaying total price
         total_Label.setBounds(5,434,535,35);
         total_Label.setFont(new Font("Nanum", Font.PLAIN, 16));
-        total_Label.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+//        total_Label.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        total_Label.setBorder(null);
         total_Label.setHorizontalAlignment(SwingConstants.CENTER);
         total_Label.setVerticalAlignment(SwingConstants.CENTER);
 
@@ -486,7 +496,7 @@ public class Entries_Table {
         JButton save_button=new JButton("SAVE");
         save_button.setBounds(63,482,96,36);
         save_button.setFont(new Font("Sofia", Font.PLAIN, 18));
-        save_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+//        save_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 
         save_button.addActionListener(new ActionListener() {
             @Override
@@ -555,9 +565,10 @@ public class Entries_Table {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                save_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+                save_button.setBorder(null);
             }
         });
+        save_button.setBorder(null);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -565,8 +576,8 @@ public class Entries_Table {
         JButton check_history_button=new JButton("Check");
         check_history_button.setBounds(224,482,96,36);
         check_history_button.setFont(new Font("Sofia", Font.PLAIN, 18));
-        check_history_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-
+//        check_history_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        check_history_button.setBorder(null);
         check_history_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -600,7 +611,7 @@ public class Entries_Table {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                check_history_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+                check_history_button.setBorder(null);
             }
         });
 
@@ -642,9 +653,19 @@ public class Entries_Table {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                logout_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+                logout_button.setBorder(null);
             }
         });
+        logout_button.setBorder(null);
+
+////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
+        // Creating background
+        JLabel background=new JLabel();
+        background.setBounds(0,0,545,568);
+        ImageIcon icon=new ImageIcon("/home/anonymous/Study Material/JAVA/JAVAProject/src/Entry.jpeg");
+        background.setIcon(icon);
+
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
         entries_Table.add(logout_button);
@@ -667,5 +688,6 @@ public class Entries_Table {
         entries_Table.setVisible(true);
         entries_Table.getContentPane().setBackground(new Color(175,231,234,255));
         entries_Table.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        entries_Table.add(background);
     }
 }

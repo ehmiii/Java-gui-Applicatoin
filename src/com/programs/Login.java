@@ -9,20 +9,25 @@ class Login {
         Dimension dimension=Toolkit.getDefaultToolkit().getScreenSize();
         JFrame login_frame=new JFrame("Ahmad Khan");
         Image logo= Toolkit.getDefaultToolkit().getImage("/home/anonymous/Study Material/JAVA/JAVAProject/src/expenses.png");
-        // Making title label
         JLabel title_label=new JLabel("Expenses Tracker",SwingConstants.CENTER);
+        JTextField username=new JTextField();
+        JPasswordField password =new JPasswordField("Enter your password");
+        JButton login_button=new JButton("Login");
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Making title label
         title_label.setBounds(0,0,463,70);
+        title_label.setForeground(Color.black.brighter());
         title_label.setFont(new Font("Sofia", Font.BOLD, 32));
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // Enter your name Label
-        JTextField username=new JTextField();
         username.setBounds(122,85,219,36);
-        username.setBackground(Color.cyan);
+        username.setBackground(new Color(102, 157, 204));
         username.setFont(new Font("Luxurious Roman",Font.PLAIN,16));
-        username.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+//        username.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         username.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -62,19 +67,20 @@ class Login {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                username.setBorder(BorderFactory.createLineBorder(Color.blue));
+                username.setBorder(null);
             }
         });
+        username.setBorder(null);
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
         // Creating password field
-        JPasswordField password =new JPasswordField("Enter your password");
         password.setBounds(122,136,219,36);
         password.setFont(new Font("Luxurious Roman",Font.PLAIN,16));
-        password.setBackground(Color.cyan);
+        password.setBackground(new Color(102, 157, 204));
         password.setForeground(Color.gray);
         password.setEchoChar((char) 0);
-        password.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+//        password.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 
         password.addFocusListener(new FocusListener() {
             @Override
@@ -120,16 +126,17 @@ class Login {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                password.setBorder(BorderFactory.createLineBorder(Color.blue));
+                password.setBorder(null);
             }
         });
+        password.setBorder(null);
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
         //Creating login button
-        JButton login_button=new JButton("Login");
+
         login_button.setBounds(122,187,106,35);
         login_button.setFont(new Font("Sofia", Font.BOLD, 16));
-        login_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+//        login_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         //Creating action listener on login button
 
 
@@ -177,9 +184,10 @@ class Login {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                login_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+                login_button.setBorder(null);
             }
         });
+        login_button.setBorder(null);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -187,7 +195,7 @@ class Login {
         JButton signup_button=new JButton("Signup");
         signup_button.setBounds(235,187,106,35);
         signup_button.setFont(new Font("Sofia", Font.BOLD, 16));
-        signup_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+//        signup_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         signup_button.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -210,12 +218,17 @@ class Login {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                signup_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+                signup_button.setBorder(null);
             }
         });
+        signup_button.setBorder(null);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        JLabel background=new JLabel();
+        background.setBounds(0,0,463,307);
+        ImageIcon icon=new ImageIcon("/home/anonymous/Study Material/JAVA/JAVAProject/src/Login.jpeg");
+        background.setIcon(icon);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -233,6 +246,6 @@ class Login {
         login_frame.setVisible(true);
         login_frame.getContentPane().setBackground(new Color(175,231,234,255));
         login_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        login_frame.add(background);
     }
 }
