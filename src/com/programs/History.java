@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.print.PrinterException;
 import java.io.*;
 import java.nio.file.Files;
@@ -34,12 +36,14 @@ public class History {
         }catch (Exception ignored){
 
         }
-////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Income clear button
         JButton income_clear=new JButton("CLEAR INCOME");
         income_clear.setBounds(518,5,135,32);
         income_clear.setFont(new Font("Sofia", Font.PLAIN, 14));
         income_clear.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+
         income_clear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -57,7 +61,33 @@ public class History {
             }
         });
 
-///////////////////////////////////////////////////////////////////////////////////
+        income_clear.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                income_clear.setBorder(BorderFactory.createLineBorder(Color.RED));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                income_clear.setBorder(BorderFactory.createLineBorder(Color.blue));
+            }
+        });
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating Text area for history
         JTextArea textArea=new JTextArea();
         textArea.setEditable(false);
@@ -96,15 +126,18 @@ public class History {
         calculate_label.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         calculate_label.setHorizontalAlignment(SwingConstants.CENTER);
         calculate_label.setVerticalAlignment(SwingConstants.CENTER);
-/////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating scrollbar for text area
 
-///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating print button
         JButton print_button=new JButton("PRINT");
         print_button.setBounds(145,482,98,32);
         print_button.setFont(new Font("Sofia", Font.PLAIN, 15));
         print_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+
         print_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -116,8 +149,33 @@ public class History {
             }
         });
 
+        print_button.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
 
-/////////////////////////////////////////////////////////////////////////////////////
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                print_button.setBorder(BorderFactory.createLineBorder(Color.RED));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                print_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+            }
+        });
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating back button
         JButton back_button=new JButton("BACK");
         back_button.setBounds(413,482,98,32);
@@ -130,43 +188,103 @@ public class History {
                 history_frame.dispose();
             }
         });
-////////////////////////////////////////////////////////////////////////////////////////////
+
+        back_button.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                back_button.setBorder(BorderFactory.createLineBorder(Color.RED));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                back_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+            }
+        });
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating Calculate button
         JButton calculate_button=new JButton("CALCULATE");
         calculate_button.setBounds(265,482,126,32);
         calculate_button.setFont(new Font("Sofia", Font.PLAIN, 14));
         calculate_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+
         calculate_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 try {
-                    File Income = new File("Income.txt");
-                    File file = new File("Total_Items1.txt");
-                    Scanner sc=new Scanner(file);
-                    Scanner income=new Scanner(Income);
-                    double total =0;
-                    while(sc.hasNextLine()){
-                        try{
-                            total += sc.nextDouble();
-                        }catch (Exception ignored){
+                    if(!textArea.getText().equals("")) {
+                        File Income = new File("Income.txt");
+                        File file = new File("Total_Items1.txt");
+                        Scanner sc = new Scanner(file);
+                        Scanner income = new Scanner(Income);
+                        double total = 0;
+                        while (sc.hasNextLine()) {
+                            try {
+                                total += sc.nextDouble();
+                            } catch (Exception ignored) {
 
+                            }
                         }
+                        double sum = income.nextDouble() - total;
+                        calculate_label.setText("Total expenses: " + total + "    Left amount: " + sum);
                     }
-                    double sum= income.nextDouble()-total;
-                    calculate_label.setText("Total expenses: " + total + "    Left amount: " + sum);
+                    else{
+                        JOptionPane.showMessageDialog(null,"Nothing to calculate please enter some amount","Attention!!!",1);
+                    }
                 } catch (FileNotFoundException fileNotFoundException) {
                     fileNotFoundException.printStackTrace();
                 }
             }
         });
 
+        calculate_button.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                calculate_button.setBorder(BorderFactory.createLineBorder(Color.RED));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                calculate_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+            }
+        });
+////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
         // Creating Clear Button
         JButton clear_button=new JButton("CLEAR");
         clear_button.setBounds(539,44,98,32);
         clear_button.setFont(new Font("Sofia", Font.PLAIN, 15));
         clear_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+
         clear_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -194,6 +312,33 @@ public class History {
                 }
             }
         });
+
+        clear_button.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                clear_button.setBorder(BorderFactory.createLineBorder(Color.RED));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                clear_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+            }
+        });
+///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
         history_frame.add(income_clear);
         history_frame.add(calculate_button);

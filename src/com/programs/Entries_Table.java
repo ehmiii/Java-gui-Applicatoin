@@ -36,8 +36,8 @@ public class Entries_Table {
         JButton calculate_button=new JButton("CALCULATE");
         JButton logout_button=new JButton("Logout");
 ///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
         // Income Text field
-
         income_Field.setVisible(false);
         income_Field.setForeground(Color.gray);
         income_Field.setBounds(159,39,227,30);
@@ -63,6 +63,7 @@ public class Entries_Table {
                 }
             }
         });
+
         income_Field.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -71,9 +72,35 @@ public class Entries_Table {
                 }
             }
         });
+
+        income_Field.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                income_Field.setBorder(BorderFactory.createLineBorder(Color.RED));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                income_Field.setBorder(BorderFactory.createLineBorder(Color.blue));
+            }
+        });
+////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating checkBox
-
         checkBox.setBounds(146,0,253,30);
         checkBox.setBackground(new Color(175,231,234,255));
         checkBox.setFont(new Font("Nanum",Font.PLAIN,15));
@@ -85,14 +112,42 @@ public class Entries_Table {
                 income_Field.setVisible(e.getStateChange() == ItemEvent.SELECTED);
             }
         });
+
+        checkBox.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                checkBox.setBorder(BorderFactory.createLineBorder(Color.RED));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                checkBox.setBorder(BorderFactory.createLineBorder(Color.blue));
+            }
+        });
+
+/////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
         // Creating Item name field
-
         item_Field.setForeground(Color.gray);
         item_Field.setBounds(63,78,192,30);
         item_Field.setFont(new Font("Luxurious Roman",Font.PLAIN,15));
         item_Field.setBackground(Color.cyan);
         item_Field.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+
         item_Field.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -123,14 +178,42 @@ public class Entries_Table {
                 }
             }
         });
+
+        item_Field.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                item_Field.setBorder(BorderFactory.createLineBorder(Color.RED));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                item_Field.setBorder(BorderFactory.createLineBorder(Color.blue));
+            }
+        });
+
+//////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
         // Creating Item price field
-
         price_field.setForeground(Color.gray);
         price_field.setBounds(290,78,192,30);
         price_field.setFont(new Font("Luxurious Roman",Font.PLAIN,16));
         price_field.setBackground(Color.cyan);
         price_field.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+
         price_field.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -160,12 +243,40 @@ public class Entries_Table {
                 }
             }
         });
-///////////////////////////////////////////////////////////////////////////////////////
+
+        price_field.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                price_field.setBorder(BorderFactory.createLineBorder(Color.RED));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                price_field.setBorder(BorderFactory.createLineBorder(Color.blue));
+            }
+        });
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating adding button
         add_button.setBounds(63,117,115,30);
         add_button.setFont(new Font("Sofia", Font.PLAIN, 16));
         add_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-//        final int[] count = {1};
+
         add_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -182,7 +293,6 @@ public class Entries_Table {
                     double price = Double.parseDouble(price_field.getText());
                     textArea.setForeground(Color.black);
                     textArea.append(item_Field.getText() + " : \n");
-//                    count[0]++;
                     textArea1.append(price+"\n");
                     price_field.setText("Enter item price");
                     price_field.setForeground(Color.gray);
@@ -195,13 +305,39 @@ public class Entries_Table {
             }
         });
 
+        add_button.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
 
-///////////////////////////////////////////////////////////////////////////////////////////////
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                add_button.setBorder(BorderFactory.createLineBorder(Color.RED));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                add_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+            }
+        });
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating remove button
-
         remove_button.setBounds(215,117,115,30);
         remove_button.setFont(new Font("Sofia", Font.PLAIN, 18));
         remove_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+
         remove_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -210,12 +346,9 @@ public class Entries_Table {
                 }
                 else {
                     try {
-
                         int getLine = textArea.getLineStartOffset(count-1);
                         int end = textArea.getLineEndOffset(count-1);
                         textArea.replaceRange(null, getLine, end);
-
-
                         int getLine1 = textArea1.getLineStartOffset(count-1);
                         int end1 = textArea1.getLineEndOffset(count-1);
                         textArea1.replaceRange(null, getLine1, end1);
@@ -227,15 +360,41 @@ public class Entries_Table {
                         badLocationException.printStackTrace();
                     }
                 }
-
             }
         });
 
+        remove_button.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                remove_button.setBorder(BorderFactory.createLineBorder(Color.RED));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                remove_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+            }
+        });
+/////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating calculation button
         calculate_button.setBounds(367,117,115,30);
         calculate_button.setFont(new Font("Sofia", Font.PLAIN, 16));
         calculate_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+
         calculate_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -259,7 +418,7 @@ public class Entries_Table {
                         double total_income = Double.parseDouble(income.nextLine());
                         double left_cash = total_income - sum;
                         total_Label.setText("");
-                        total_Label.setText("Total cash: " + sum + "Rs" + "    Left cash: " + left_cash + "Rs" + "    Income: " + total_income);
+                        total_Label.setText("Expenses: " + sum + "Rs" + "    Left: " + left_cash + "Rs" + "    Total amount: " + total_income);
                     }
                     else
                     {
@@ -270,6 +429,33 @@ public class Entries_Table {
                 }
             }
         });
+
+        calculate_button.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                calculate_button.setBorder(BorderFactory.createLineBorder(Color.RED));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                calculate_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+            }
+        });
+///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
         // Creating text area for adding item temporary
         textArea.setBounds(63,156,209,276);
@@ -286,79 +472,101 @@ public class Entries_Table {
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating Label for displaying total price
-        total_Label.setBounds(18,434,508,35);
+        total_Label.setBounds(5,434,535,35);
         total_Label.setFont(new Font("Nanum", Font.PLAIN, 16));
         total_Label.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         total_Label.setHorizontalAlignment(SwingConstants.CENTER);
         total_Label.setVerticalAlignment(SwingConstants.CENTER);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
         // Creating SAVE button
         JButton save_button=new JButton("SAVE");
         save_button.setBounds(63,482,96,36);
         save_button.setFont(new Font("Sofia", Font.PLAIN, 18));
         save_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+
         save_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-//                    File Total_Items=new File("Total_Items.txt");
-//                    FileWriter total_Items=new FileWriter("Total_Items.txt");
                     BufferedWriter total_Items = new BufferedWriter(
                             new FileWriter("Total_Items.txt", true));
 
-//                    File Total_Items1=new File("Total_Items1.txt");
-//                    FileWriter total_Items1=new FileWriter("Total_Items1.txt");
                     BufferedWriter total_Items1 = new BufferedWriter(
                             new FileWriter("Total_Items1.txt", true));
 
                     File Date_log=new File("DateLogs.txt");
                     FileWriter date_log=new FileWriter("DateLogs.txt");
-//                    BufferedWriter date_log = new BufferedWriter(
-//                            new FileWriter("DateLogs.txt", true));
-
                     int lines = textArea.getLineCount();
-//                    int lines1 = textArea1.getLineCount();
                     for(int i=0; i<lines-1;i++){
-
                         int start = textArea.getLineStartOffset(i);
                         int start1 = textArea1.getLineStartOffset(i);
-
                         int end=textArea.getLineEndOffset(i);
                         int end1=textArea1.getLineEndOffset(i);
 
                         total_Items.write(textArea.getText(start,end-start));
                         total_Items1.write(textArea1.getText(start1,end1-start1));
+
                         total_Items.flush();
                         total_Items1.flush();
                     }
                     date_log.write("Date: "+ dateFormat.format(date)+"\n");
+
                     date_log.flush();
                     date_log.close();
                     total_Items1.close();
                     total_Items.close();
+
                     if(!income_Field.getText().equals("Enter your income")) {
                         File Income = new File("Income.txt");
                         FileWriter income = new FileWriter("Income.txt");
+
                         income.write(income_Field.getText() + "\n");
                         income.flush();
                         income.close();
                     }
-
                 }catch (Exception ignored){
-
                 }
             }
         });
 
-        
+        save_button.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                save_button.setBorder(BorderFactory.createLineBorder(Color.RED));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                save_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+            }
+        });
+
+///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
         // Creating Check history Button
         JButton check_history_button=new JButton("Check");
         check_history_button.setBounds(224,482,96,36);
         check_history_button.setFont(new Font("Sofia", Font.PLAIN, 18));
         check_history_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+
         check_history_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -369,12 +577,41 @@ public class Entries_Table {
                 entries_Table.dispose();
             }
         });
+
+        check_history_button.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                check_history_button.setBorder(BorderFactory.createLineBorder(Color.RED));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                check_history_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+            }
+        });
+
+///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
         // Creating Logout Button
 
         logout_button.setBounds(386,482,96,36);
         logout_button.setFont(new Font("Sofia", Font.PLAIN, 18));
         logout_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+
         logout_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -383,7 +620,33 @@ public class Entries_Table {
             }
         });
 
+        logout_button.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
 
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                logout_button.setBorder(BorderFactory.createLineBorder(Color.RED));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                logout_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+            }
+        });
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
         entries_Table.add(logout_button);
         entries_Table.add(save_button);
         entries_Table.add(check_history_button);

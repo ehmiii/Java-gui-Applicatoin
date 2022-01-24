@@ -2,10 +2,7 @@ package com.programs;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
+import java.awt.event.*;
 
 class Login {
     Login(){
@@ -16,8 +13,9 @@ class Login {
         JLabel title_label=new JLabel("Expenses Tracker",SwingConstants.CENTER);
         title_label.setBounds(0,0,463,70);
         title_label.setFont(new Font("Sofia", Font.BOLD, 32));
-        // creating error dialog box
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // Enter your name Label
         JTextField username=new JTextField();
@@ -42,6 +40,33 @@ class Login {
             }
         });
 
+        username.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                username.setBorder(BorderFactory.createLineBorder(Color.RED));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                username.setBorder(BorderFactory.createLineBorder(Color.blue));
+            }
+        });
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
         // Creating password field
         JPasswordField password =new JPasswordField("Enter your password");
         password.setBounds(122,136,219,36);
@@ -50,6 +75,7 @@ class Login {
         password.setForeground(Color.gray);
         password.setEchoChar((char) 0);
         password.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+
         password.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -72,12 +98,41 @@ class Login {
             }
         });
 
+        password.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                password.setBorder(BorderFactory.createLineBorder(Color.RED));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                password.setBorder(BorderFactory.createLineBorder(Color.blue));
+            }
+        });
+////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
         //Creating login button
         JButton login_button=new JButton("Login");
         login_button.setBounds(122,187,106,35);
         login_button.setFont(new Font("Sofia", Font.BOLD, 16));
         login_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         //Creating action listener on login button
+
+
         login_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -99,12 +154,65 @@ class Login {
             }
         });
 
+
+        login_button.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                login_button.setBorder(BorderFactory.createLineBorder(Color.RED));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                login_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+            }
+        });
+
+///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
         // Creating signup_button
         JButton signup_button=new JButton("Signup");
         signup_button.setBounds(235,187,106,35);
         signup_button.setFont(new Font("Sofia", Font.BOLD, 16));
         signup_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        signup_button.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                signup_button.setBorder(BorderFactory.createLineBorder(Color.RED));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                signup_button.setBorder(BorderFactory.createLineBorder(Color.blue));
+            }
+        });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
