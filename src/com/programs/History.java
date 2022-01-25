@@ -8,10 +8,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.print.PrinterException;
 import java.io.*;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class History {
@@ -92,39 +88,33 @@ public class History {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating Text area for history
         JTextArea textArea=new JTextArea();
+        JScrollPane text_Area=new JScrollPane(textArea);
         textArea.setEditable(false);
-        textArea.setBounds(145,44,366,388);
+        text_Area.setBounds(145,44,366,388);
         textArea.setBackground(new Color(85, 186, 235));
         textArea.setFont(new Font("Nanum", Font.PLAIN, 14));
 //        textArea.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        File Total_Expenses=new File("Total_Expenses.txt");
+        File Total_Items=new File("Total_Item.txt");
+        File Total_Items_Price=new File("Total_Items_Price.txt");
         try{
-            File Total_Income=new File("Income.txt");
-            File Total_Expenses=new File("Total_Expenses.txt");
-            File Total_Items=new File("Total_Items.txt");
-            File Total_Items_Price=new File("Total_Items1.txt");
-            File Date_Log=new File("DateLogs.txt");
+
             Scanner total_Expenses=new Scanner(Total_Expenses);
             Scanner total_Items=new Scanner(Total_Items);
             Scanner total_Items_Price=new Scanner(Total_Items_Price);
-            Scanner date_log=new Scanner(Date_Log);
-            textArea.setText("\t"+date_log.nextLine()+"\n");
-            textArea.append("====================================\n");
-            while(total_Items.hasNextLine()){
-                String lines=total_Items.nextLine()+total_Items_Price.nextLine();
-                textArea.append(lines+"\n\n");
-            }
-            total_Expenses.close();
-            total_Items.close();
-            total_Items_Price.close();
-            date_log.close();
-            textArea.append("====================================");
+                while (total_Items.hasNextLine()) {
+                        textArea.append(" "+total_Items.nextLine()+"\n");
+                }
+                total_Expenses.close();
+                total_Items.close();
+                total_Items_Price.close();
         }catch (Exception ignored){
 
         }
 
 /////////////////////////////////////////////////////////////////////////////////////////
         // Creating label for calculation
-        calculate_label.setBounds(145,440,366,34);
+        calculate_label.setBounds(105,440,406,34);
         calculate_label.setFont(new Font("Nanum", Font.BOLD, 14));
 //        calculate_label.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         calculate_label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -234,7 +224,7 @@ public class History {
                 try {
                     if(!textArea.getText().equals("")) {
                         File Income = new File("Income.txt");
-                        File file = new File("Total_Items1.txt");
+                        File file = new File("Total_Items_Price.txt");
                         Scanner sc = new Scanner(file);
                         Scanner income = new Scanner(Income);
                         double total = 0;
@@ -297,8 +287,8 @@ public class History {
                 int x = JOptionPane.showConfirmDialog(history_frame,"Do you want to clear Income?","Conformation",JOptionPane.YES_NO_CANCEL_OPTION);
                 if(JOptionPane.YES_OPTION==x) {
                     try {
-                        FileWriter total_Items = new FileWriter("Total_Items.txt");
-                        FileWriter total_Items_Price = new FileWriter("Total_Items1.txt");
+                        FileWriter total_Items = new FileWriter("Total_Item.txt");
+                        FileWriter total_Items_Price = new FileWriter("Total_Items_Price.txt");
 
                         FileWriter date_logs = new FileWriter("DateLogs.txt");
                         total_Items.write("");
@@ -350,7 +340,7 @@ public class History {
 
         JLabel background=new JLabel();
         background.setBounds(0,0,657,565);
-        ImageIcon icon=new ImageIcon("/home/anonymous/Study Material/JAVA/JAVAProject/src/History.jpeg");
+        ImageIcon icon=new ImageIcon(getClass().getResource("History.jpeg"));
         background.setIcon(icon);
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -360,7 +350,7 @@ public class History {
         history_frame.add(clear_button);
         history_frame.add(back_button);
         history_frame.add(print_button);
-        history_frame.add(textArea);
+        history_frame.add(text_Area);
         history_frame.add(income_label);
         history_frame.setSize(657,565);
         history_frame.setLocation(dimension.width/2-history_frame.getSize().width/2, dimension.height/2-history_frame.getSize().height/2);

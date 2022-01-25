@@ -465,10 +465,12 @@ public class Entries_Table {
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
         // Creating text area for adding item temporary
+        JScrollPane text_Area=new JScrollPane(textArea);
+        JScrollPane text_Area1=new JScrollPane(textArea1);
         textArea.setBackground(new Color(112, 202, 243));
         textArea1.setBackground(new Color(112, 202, 243));
-        textArea.setBounds(63,156,209,276);
-        textArea1.setBounds(272,156,209,276);
+        text_Area.setBounds(63,156,209,276);
+        text_Area1.setBounds(272,156,209,276);
         textArea1.setFont(new Font("Nanum",Font.PLAIN,16));
         textArea.setFont(new Font("Nanum", Font.PLAIN,16));
         textArea.setHighlighter(null);
@@ -503,31 +505,25 @@ public class Entries_Table {
             public void actionPerformed(ActionEvent e) {
                 try{
                     BufferedWriter total_Items = new BufferedWriter(
-                            new FileWriter("Total_Items.txt", true));
+                            new FileWriter("Total_Item.txt", true));
 
-                    BufferedWriter total_Items1 = new BufferedWriter(
-                            new FileWriter("Total_Items1.txt", true));
+                    BufferedWriter total_Items_Price = new BufferedWriter(
+                            new FileWriter("Total_Items_Price.txt", true));
 
-                    File Date_log=new File("DateLogs.txt");
-                    FileWriter date_log=new FileWriter("DateLogs.txt");
                     int lines = textArea.getLineCount();
+                    total_Items.write(("======Date: "+ dateFormat.format(date)+" ======\n"));
                     for(int i=0; i<lines-1;i++){
                         int start = textArea.getLineStartOffset(i);
                         int start1 = textArea1.getLineStartOffset(i);
                         int end=textArea.getLineEndOffset(i);
                         int end1=textArea1.getLineEndOffset(i);
 
-                        total_Items.write(textArea.getText(start,end-start));
-                        total_Items1.write(textArea1.getText(start1,end1-start1));
-
+                        total_Items.write(textArea.getText(start,end-start).replace("\n"," ")+textArea1.getText(start,end-start));
+                        total_Items_Price.write(textArea1.getText(start1,end1-start1));
                         total_Items.flush();
-                        total_Items1.flush();
+                        total_Items_Price.flush();
                     }
-                    date_log.write("Date: "+ dateFormat.format(date)+"\n");
-
-                    date_log.flush();
-                    date_log.close();
-                    total_Items1.close();
+                    total_Items_Price.close();
                     total_Items.close();
 
                     if(!income_Field.getText().equals("Enter your income")) {
@@ -663,7 +659,7 @@ public class Entries_Table {
         // Creating background
         JLabel background=new JLabel();
         background.setBounds(0,0,545,568);
-        ImageIcon icon=new ImageIcon("/home/anonymous/Study Material/JAVA/JAVAProject/src/Entry.jpeg");
+        ImageIcon icon=new ImageIcon(getClass().getResource("Entry.jpeg"));
         background.setIcon(icon);
 
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -671,8 +667,8 @@ public class Entries_Table {
         entries_Table.add(logout_button);
         entries_Table.add(save_button);
         entries_Table.add(check_history_button);
-        entries_Table.add(textArea);
-        entries_Table.add(textArea1);
+        entries_Table.add(text_Area);
+        entries_Table.add(text_Area1);
         entries_Table.add(total_Label);
         entries_Table.add(remove_button);
         entries_Table.add(add_button);

@@ -227,7 +227,7 @@ class Login {
 
         JLabel background=new JLabel();
         background.setBounds(0,0,463,307);
-        ImageIcon icon=new ImageIcon("/home/anonymous/Study Material/JAVA/JAVAProject/src/Login.jpeg");
+        ImageIcon icon=new ImageIcon(getClass().getResource("Login.jpeg"));
         background.setIcon(icon);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
