@@ -24,9 +24,13 @@ public class History {
         income_label.setBorder(null);
         income_label.setHorizontalAlignment(SwingConstants.CENTER);
         income_label.setVerticalAlignment(SwingConstants.CENTER);
+        if(income_label.getText().equals("")){
+            income_label.setText("Total Amount: 0");
+        }
         try{
         File Income=new File("Income.txt");
             Scanner income=new Scanner(Income);
+
             income_label.setText("Total Amount: "+income.nextLine());
             income.close();
 
@@ -50,9 +54,8 @@ public class History {
                     income.write("");
                     income.flush();
                     income.close();
-                    income_label.setText("");
+                    income_label.setText("Total Amount: 0");
                 }catch (Exception ignored){
-
                 }
                }
             }
@@ -94,7 +97,7 @@ public class History {
         textArea.setBackground(new Color(85, 186, 235));
         textArea.setFont(new Font("Nanum", Font.PLAIN, 14));
 //        textArea.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        File Total_Expenses=new File("Total_Expenses.txt");
+        File Total_Expenses=new File("./Total_Item.txt");
         File Total_Items=new File("Total_Item.txt");
         File Total_Items_Price=new File("Total_Items_Price.txt");
         try{
@@ -284,25 +287,22 @@ public class History {
         clear_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int x = JOptionPane.showConfirmDialog(history_frame,"Do you want to clear Income?","Conformation",JOptionPane.YES_NO_CANCEL_OPTION);
+                int x = JOptionPane.showConfirmDialog(history_frame,"Do you want to clear Data?","Conformation",JOptionPane.YES_NO_CANCEL_OPTION);
                 if(JOptionPane.YES_OPTION==x) {
                     try {
                         FileWriter total_Items = new FileWriter("Total_Item.txt");
                         FileWriter total_Items_Price = new FileWriter("Total_Items_Price.txt");
 
-                        FileWriter date_logs = new FileWriter("DateLogs.txt");
                         total_Items.write("");
                         total_Items_Price.write("");
 
-                        date_logs.write("");
                         total_Items.flush();
                         total_Items_Price.flush();
 
-                        date_logs.flush();
                         total_Items.close();
                         total_Items_Price.close();
-                        date_logs.close();
                         textArea.setText("");
+
                     } catch (IOException ignored) {
                     }
                 }
@@ -338,10 +338,14 @@ public class History {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        // Creating Background
         JLabel background=new JLabel();
         background.setBounds(0,0,657,565);
         ImageIcon icon=new ImageIcon(getClass().getResource("History.jpeg"));
         background.setIcon(icon);
+        // Logo
+        Image logo= Toolkit.getDefaultToolkit().getImage("History.png");
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
         history_frame.add(income_clear);
@@ -354,6 +358,7 @@ public class History {
         history_frame.add(income_label);
         history_frame.setSize(657,565);
         history_frame.setLocation(dimension.width/2-history_frame.getSize().width/2, dimension.height/2-history_frame.getSize().height/2);
+        history_frame.setIconImage(logo);
         history_frame.setResizable(false);
         history_frame.setLayout(null);
         history_frame.setVisible(true);

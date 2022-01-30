@@ -21,7 +21,7 @@ public class Entries_Table {
     int count=0;
     Entries_Table(){
         final Dimension[] dimension = {Toolkit.getDefaultToolkit().getScreenSize()};
-        JFrame entries_Table=new JFrame("Entries Table");
+        JFrame entries_Table=new JFrame("Expenses");
         JTextArea textArea=new JTextArea();
         JTextArea textArea1=new JTextArea();
         JLabel total_Label=new JLabel();
@@ -145,7 +145,7 @@ public class Entries_Table {
 /////////////////////////////////////////////////////////////////////////////////////////////
         // Creating Item name field
         item_Field.setForeground(Color.gray);
-        item_Field.setBounds(63,78,192,30);
+        item_Field.setBounds(77,77,192,30);
         item_Field.setFont(new Font("Luxurious Roman",Font.PLAIN,15));
         item_Field.setBackground(new Color(112, 202, 243));
 //        item_Field.setBorder(BorderFactory.createLineBorder(Color.BLUE));
@@ -212,7 +212,7 @@ public class Entries_Table {
 //////////////////////////////////////////////////////////////////////////////////////////
         // Creating Item price field
         price_field.setForeground(Color.gray);
-        price_field.setBounds(290,78,192,30);
+        price_field.setBounds(277,77,192,30);
         price_field.setFont(new Font("Luxurious Roman",Font.PLAIN,16));
         price_field.setBackground(new Color(112, 202, 243));
 //        price_field.setBorder(BorderFactory.createLineBorder(Color.BLUE));
@@ -277,7 +277,7 @@ public class Entries_Table {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating adding button
-        add_button.setBounds(63,117,115,30);
+        add_button.setBounds(77,114,69,30);
         add_button.setFont(new Font("Sofia", Font.PLAIN, 16));
 //        add_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 
@@ -339,7 +339,7 @@ public class Entries_Table {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating remove button
-        remove_button.setBounds(215,117,115,30);
+        remove_button.setBounds(154,114,115,30);
         remove_button.setFont(new Font("Sofia", Font.PLAIN, 18));
 //        remove_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 
@@ -394,10 +394,11 @@ public class Entries_Table {
             }
         });
         remove_button.setBorder(null);
+
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
         // Creating calculation button
-        calculate_button.setBounds(367,117,115,30);
+        calculate_button.setBounds(277,114,122,30);
         calculate_button.setFont(new Font("Sofia", Font.PLAIN, 16));
 //        calculate_button.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 
@@ -422,13 +423,16 @@ public class Entries_Table {
                         File Total_Income = new File("Income.txt");
                         Scanner income = new Scanner(Total_Income);
                         double total_income = Double.parseDouble(income.nextLine());
-                        double left_cash = total_income - sum;
-                        total_Label.setText("");
-                        total_Label.setText("Expenses: " + sum + "Rs" + "    Left: " + left_cash + "Rs" + "    Total amount: " + total_income);
+                        if(!income_Field.getText().equals("Enter your income")){
+                            total_income=Double.parseDouble(income_Field.getText());
+                        }
+                            double left_cash = total_income - sum;
+                            total_Label.setText("");
+                            total_Label.setText("Expenses: " + sum + "Rs" + "    Left: " + left_cash + "Rs" + "    Total amount: " + total_income);
                     }
                     else
                     {
-                        JOptionPane.showMessageDialog(null,"There is nothing to calculate please enter some amount","Attention!!!",1);
+                        JOptionPane.showMessageDialog(null,"Nothing to calculate please enter some amount","Attention!!!",1);
                     }
                 }catch (Exception ignored){
 
@@ -462,6 +466,29 @@ public class Entries_Table {
             }
         });
         calculate_button.setBorder(null);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+        // Creating Edit button
+        JButton edit_Button=new JButton("Edit");
+        edit_Button.setBounds(407,114,62,30);
+        edit_Button.setFont(new Font("Sofia",Font.PLAIN,16));
+        edit_Button.addActionListener(new ActionListener() {
+            int counter=0;
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(counter>=1){
+                    textArea.setEditable(false);
+                    textArea1.setEditable(false);
+                    counter=0;
+                }
+                else {
+                    textArea.setEditable(true);
+                    textArea1.setEditable(true);
+                    counter++;
+                }
+            }
+        });
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
         // Creating text area for adding item temporary
@@ -504,35 +531,46 @@ public class Entries_Table {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    BufferedWriter total_Items = new BufferedWriter(
-                            new FileWriter("Total_Item.txt", true));
-
-                    BufferedWriter total_Items_Price = new BufferedWriter(
-                            new FileWriter("Total_Items_Price.txt", true));
-
-                    int lines = textArea.getLineCount();
-                    total_Items.write(("======Date: "+ dateFormat.format(date)+" ======\n"));
-                    for(int i=0; i<lines-1;i++){
-                        int start = textArea.getLineStartOffset(i);
-                        int start1 = textArea1.getLineStartOffset(i);
-                        int end=textArea.getLineEndOffset(i);
-                        int end1=textArea1.getLineEndOffset(i);
-
-                        total_Items.write(textArea.getText(start,end-start).replace("\n"," ")+textArea1.getText(start,end-start));
-                        total_Items_Price.write(textArea1.getText(start1,end1-start1));
-                        total_Items.flush();
-                        total_Items_Price.flush();
+                    if(textArea.getLineCount() != textArea1.getLineCount()){
+                        JOptionPane.showMessageDialog(null,"Something missing price or Item name","Information",1);
                     }
-                    total_Items_Price.close();
-                    total_Items.close();
+                    else {
+                        if (textArea.getText().equals("") && textArea1.getText().equals("")) {
+                            JOptionPane.showMessageDialog(null, "Please enter something", "Information", 1);
+                        } else {
+                            BufferedWriter total_Items = new BufferedWriter(
+                                    new FileWriter("Total_Item.txt", true));
 
-                    if(!income_Field.getText().equals("Enter your income")) {
-                        File Income = new File("Income.txt");
-                        FileWriter income = new FileWriter("Income.txt");
+                            BufferedWriter total_Items_Price = new BufferedWriter(
+                                    new FileWriter("Total_Items_Price.txt", true));
 
-                        income.write(income_Field.getText() + "\n");
-                        income.flush();
-                        income.close();
+                            int lines = textArea.getLineCount();
+                            total_Items.write(("======Date: " + dateFormat.format(date) + " ======\n"));
+                            for (int i = 0; i < lines - 1; i++) {
+                                int start = textArea.getLineStartOffset(i);
+                                int start1 = textArea1.getLineStartOffset(i);
+                                int end = textArea.getLineEndOffset(i);
+                                int end1 = textArea1.getLineEndOffset(i);
+
+                                total_Items.write(textArea.getText(start, end - start).replace("\n", " ") + textArea1.getText(start1, end1 - start1));
+                                total_Items_Price.write(textArea1.getText(start1, end1 - start1));
+                                total_Items.flush();
+                                total_Items_Price.flush();
+                            }
+                            total_Items_Price.close();
+                            total_Items.close();
+                            textArea.setText("");
+                            textArea1.setText("");
+                        }
+
+                        if (!income_Field.getText().equals("Enter your income")) {
+                            File Income = new File("Income.txt");
+                            FileWriter income = new FileWriter("Income.txt");
+
+                            income.write(income_Field.getText() + "\n");
+                            income.flush();
+                            income.close();
+                        }
                     }
                 }catch (Exception ignored){
                 }
@@ -662,9 +700,12 @@ public class Entries_Table {
         ImageIcon icon=new ImageIcon(getClass().getResource("Entry.jpeg"));
         background.setIcon(icon);
 
+        // logo
+        Image logo= Toolkit.getDefaultToolkit().getImage("Entry.png");
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
         entries_Table.add(logout_button);
+        entries_Table.setIconImage(logo);
         entries_Table.add(save_button);
         entries_Table.add(check_history_button);
         entries_Table.add(text_Area);
@@ -672,6 +713,7 @@ public class Entries_Table {
         entries_Table.add(total_Label);
         entries_Table.add(remove_button);
         entries_Table.add(add_button);
+        entries_Table.add(edit_Button);
         entries_Table.add(calculate_button);
         entries_Table.add(price_field);
         entries_Table.add(income_Field);

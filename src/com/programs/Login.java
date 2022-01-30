@@ -7,8 +7,8 @@ import java.awt.event.*;
 class Login {
     Login(){
         Dimension dimension=Toolkit.getDefaultToolkit().getScreenSize();
-        JFrame login_frame=new JFrame("Ahmad Khan");
-        Image logo= Toolkit.getDefaultToolkit().getImage("/home/anonymous/Study Material/JAVA/JAVAProject/src/expenses.png");
+        JFrame login_frame=new JFrame("Login Form");
+        Image logo= Toolkit.getDefaultToolkit().getImage("expenses.png");
         JLabel title_label=new JLabel("Expenses Tracker",SwingConstants.CENTER);
         JTextField username=new JTextField();
         JPasswordField password =new JPasswordField("Enter your password");
@@ -33,6 +33,7 @@ class Login {
             public void focusGained(FocusEvent e) {
                 if(username.getText().equals("Enter your name")) {
                     username.setText("");
+                    username.setForeground(Color.black);
                 }
             }
 
@@ -89,7 +90,9 @@ class Login {
                 String str1="Enter your password";
                 if(str.equals(str1)) {
                     password.setText("");
-                    password.setEchoChar('*');
+                    password.setForeground(Color.black);
+                    password.setEchoChar('\u25CB');
+
                 }
             }
 
@@ -237,7 +240,6 @@ class Login {
         login_frame.add(username);
         login_frame.add(password);
         login_frame.add(title_label);
-//        login_frame.add(background);
         login_frame.setIconImage(logo);
         login_frame.setSize(463,307);
         login_frame.setLocation(dimension.width/2-login_frame.getSize().width/2, dimension.height/2-login_frame.getSize().height/2);
